@@ -7,39 +7,43 @@ require.config({
 
 require(['virtual-dom'], function(vdomlib) {
 
-    console.info(vdomlib);
+    function getSlot(slot) {
+        var slotH = vdomlib.h('div.slot#slot-' + slot.id, [getComponent({id: 324234}), getComponent({id: 9889890})]);
+        return slotH;
+    }
 
-    // var h = require('virtual-dom/h');
-    // var diff = require('virtual-dom/diff');
-    // var patch = require('virtual-dom/patch');
-    // var createElement = require('virtual-dom/create-element');
-
-
-
-    // 1: Create a function that declares what the DOM should look like
-    function render(count)  {
+    function getComponent(component) {
         return vdomlib.h('div', {
+            className: 'component-' + component.id,
             style: {
+                backgroundColor: 'green',
                 textAlign: 'center',
-                lineHeight: (100 + count) + 'px',
                 border: '1px solid red',
-                width: (100 + count) + 'px',
-                height: (100 + count) + 'px'
+                width: '10px',
+                height: '40px'
             }
-        }, [String(count)]);
+        });
+    }
+
+    function render(data) {
+        return vdomlib.h('div.container#container', [
+            getSlot({id: 123}),
+            getSlot({id: 456}),
+            getSlot({id: 789}),
+        ]);
     }
 
     // 2: Initialise the document
     var count = 0;      // We need some app data. Here we just store a count.
 
     var tree = render(count);               // We need an initial tree
+
     var rootNode = vdomlib.create(tree);     // Create an initial root DOM node ...
     document.body.appendChild(rootNode);    // ... and it should be in the document
 
     // 3: Wire up the update logic
     setInterval(function () {
         count++;
-
         var newTree = render(count);
         var patches = vdomlib.diff(tree, newTree);
         rootNode = vdomlib.patch(rootNode, patches);
