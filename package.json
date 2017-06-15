@@ -1,0 +1,29 @@
+{
+  "name": "vdom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {
+    "html2hscript": "^2.0.1",
+    "jquery": "^3.2.1",
+    "requirejs": "^2.3.3",
+    "virtual-dom": "^2.1.1"
+  },
+  "devDependencies": {
+    "jquery": "^3.2.1",
+    "reload": "^1.1.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Algatron/vdom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Algatron/vdom/issues"
+  },
+  "homepage": "https://github.com/Algatron/vdom#readme"
+}
